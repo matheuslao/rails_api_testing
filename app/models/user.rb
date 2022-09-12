@@ -9,5 +9,9 @@ class User < ApplicationRecord
 
   enum tipo: { root: 'root', professor: 'professor', aluno: 'aluno'}
 
+  before_create do
+    self.tipo = 'aluno' if tipo.null?
+  end
+
 
 end
